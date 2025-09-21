@@ -18,13 +18,13 @@ function Hero() {
       <div className="flex h-screen px-4 pt-16">
         <div className="container relative z-10 my-auto mx-auto flex flex-col justify-center items-center text-center">
           {/* Date and Location */}
-          <h3 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-white mb-6 drop-shadow-lg">
+          {/* <h3 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-white mb-6 drop-shadow-lg">
             29-31 August @ New York
-          </h3>
+          </h3> */}
           
           {/* Main Title */}
           <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-bold text-white max-w-6xl mb-8 leading-tight drop-shadow-2xl">
-            AI Conference 2023: Unlocking the Future
+            Rashmita Goyal
           </h1>
           
           {/* Subtitle */}
