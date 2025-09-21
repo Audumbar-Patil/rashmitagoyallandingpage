@@ -1,7 +1,5 @@
-"use client";
-
-import { Typography } from "@material-tailwind/react";
-import AboutCard from "@/components/about-card";
+import React from 'react';
+import AboutCard from '../components/about-card';
 
 const EVENT_INFO = [
   {
@@ -20,22 +18,19 @@ const EVENT_INFO = [
 
 export function AboutEvent() {
   return (
-    <section className="container mx-auto flex flex-col items-center px-4 py-10">
-      <Typography variant="h6" className="text-center mb-2" color="orange">
+    <section id="about" className="container mx-auto flex flex-col items-center px-4 py-10">
+      <h6 className="text-center mb-2 text-orange-500 font-semibold">
         About the event
-      </Typography>
-      <Typography variant="h3" className="text-center" color="blue-gray">
+      </h6>
+      <h3 className="text-center text-4xl font-bold text-blue-gray-800">
         Why Attend?
-      </Typography>
-      <Typography
-        variant="lead"
-        className="mt-2 lg:max-w-4xl mb-8 w-full text-center font-normal !text-gray-500"
-      >
+      </h3>
+      <p className="mt-2 lg:max-w-4xl mb-8 w-full text-center font-normal text-gray-500 text-lg">
         Welcome to the AI Conference 2023, where the future unfolds! Whether
-        you&apos;re a seasoned AI professional, a curious newcomer, or a
+        you're a seasoned AI professional, a curious newcomer, or a
         business leader looking to harness the power of AI, this conference is
         designed to inspire, educate, and connect.
-      </Typography>
+      </p>
       <div className="mt-8 w-full grid grid-cols-1 md:grid-cols-2 gap-4 ">
         {EVENT_INFO.map((props, idx) => (
           <AboutCard key={idx} {...props} />

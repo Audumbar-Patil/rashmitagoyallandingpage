@@ -1,7 +1,4 @@
-"use client";
-
-import React from "react";
-import { Typography, Accordion, AccordionHeader, AccordionBody } from "@material-tailwind/react";
+import React from 'react';
 
 const FAQS = [
   {
@@ -31,47 +28,47 @@ export function Faq() {
   const handleOpen = (value: number) => setOpen(open === value ? 0 : value);
 
   return (
-    <section className="py-8 px-8 lg:py-20">
+    <section id="faq" className="py-8 px-8 lg:py-20">
       <div className="container mx-auto">
         <div className="text-center">
-          <Typography variant="h1" color="blue-gray" className="mb-4">
+          <h1 className="mb-4 text-blue-gray-800 text-4xl font-bold">
             Frequently asked questions
-          </Typography>
-          <Typography
-            variant="lead"
-            className="mx-auto mb-24 lg:w-3/5 !text-gray-500"
-          >
+          </h1>
+          <p className="mx-auto mb-24 lg:w-3/5 text-gray-500 text-lg">
             Welcome to the AI Conference 2023 FAQ section. We&apos;re here to
             address your most common queries and provide you with the
             information you need to make the most of your conference experience.
-          </Typography>
+          </p>
         </div>
 
         <div className="mx-auto lg:max-w-screen-lg lg:px-20">
           {FAQS.map(({ title, desc }, key) => (
-            <Accordion
+            <div
               key={key}
-              open={open === key + 1}
-              onClick={() => handleOpen(key + 1)}
+              className="border-b border-gray-200 py-4"
             >
-              <AccordionHeader className="text-left text-gray-900">
+              <button
+                onClick={() => handleOpen(key + 1)}
+                className="w-full text-left text-gray-900 text-lg font-semibold py-2 flex justify-between items-center"
+              >
                 {title}
-              </AccordionHeader>
-              <AccordionBody>
-                <Typography
-                  color="blue-gray"
-                  className="font-normal text-gray-500"
-                >
-                  {desc}
-                </Typography>
-              </AccordionBody>
-            </Accordion>
+                <span className={`transform transition-transform ${open === key + 1 ? 'rotate-180' : ''}`}>
+                  ▼
+                </span>
+              </button>
+              {open === key + 1 && (
+                <div className="mt-2">
+                  <p className="text-gray-500 text-base">
+                    {desc}
+                  </p>
+                </div>
+              )}
+            </div>
           ))}
         </div>
       </div>
     </section>
   );
 }
-
 
 export default Faq;

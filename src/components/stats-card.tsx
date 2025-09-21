@@ -1,5 +1,5 @@
+import React from 'react';
 
-import { Typography, Card } from "@material-tailwind/react";
 interface StatsCardProps {
   count: string;
   title: string;
@@ -7,16 +7,15 @@ interface StatsCardProps {
 
 export function StatsCard({ count, title }: StatsCardProps) {
   return (
-    <Card color="transparent" shadow={false}>
-      <Typography variant="h1" className="font-bold" color="blue-gray">
+    <div className="bg-transparent shadow-none">
+      <h1 className="font-bold text-4xl text-blue-gray-800">
         {count}
-      </Typography>
-      <Typography variant="h6" color="blue-gray" className="mt-1 font-medium">
+      </h1>
+      <h6 className="mt-1 font-medium text-blue-gray-800 text-lg">
         {title}
-      </Typography>
-    </Card>
+      </h6>
+    </div>
   );
 }
-
 
 export default StatsCard;

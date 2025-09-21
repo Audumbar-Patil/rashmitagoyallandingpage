@@ -1,9 +1,4 @@
-import {
-  Card,
-  CardBody,
-  Typography,
-  Button,
-} from "@material-tailwind/react";
+import React from 'react';
 
 interface AboutCardProp {
   title: string;
@@ -13,27 +8,23 @@ interface AboutCardProp {
 
 export function AboutCard({ title, description, subTitle }: AboutCardProp) {
   return (
-    <Card shadow={false}>
-      <CardBody className="h-[453px] p-5 flex flex-col justify-center items-center rounded-2xl bg-gray-900 ">
-        <Typography variant="h6" className="mb-4 text-center" color="white">
+    <div className="shadow-none">
+      <div className="h-[453px] p-5 flex flex-col justify-center items-center rounded-2xl bg-gray-900">
+        <h6 className="mb-4 text-center text-white text-lg font-semibold">
           {subTitle}
-        </Typography>
-        <Typography variant="h4" className="text-center" color="white">
+        </h6>
+        <h4 className="text-center text-white text-2xl font-bold">
           {title}
-        </Typography>
-        <Typography
-          color="white"
-          className="mt-2 mb-10 text-base w-full lg:w-8/12 text-center font-normal"
-        >
+        </h4>
+        <p className="mt-2 mb-10 text-base w-full lg:w-8/12 text-center font-normal text-white">
           {description}
-        </Typography>
-        <Button color="white" size="sm">
+        </p>
+        <button className="bg-white text-gray-900 px-4 py-2 rounded text-sm font-semibold hover:bg-gray-100 transition-colors">
           view details
-        </Button>
-      </CardBody>
-    </Card>
+        </button>
+      </div>
+    </div>
   );
 }
-
 
 export default AboutCard;

@@ -1,16 +1,8 @@
-import React from "react";
-import {
-  Navbar as MTNavbar,
-  Collapse,
-  Button,
-  IconButton,
-  Typography,
-} from "@material-tailwind/react";
+import React from 'react';
 import {
   RectangleStackIcon,
   UserCircleIcon,
   CommandLineIcon,
-  Squares2X2Icon,
   XMarkIcon,
   Bars3Icon,
 } from "@heroicons/react/24/solid";
@@ -23,15 +15,13 @@ interface NavItemProps {
 function NavItem({ children, href }: NavItemProps) {
   return (
     <li>
-      <Typography
-        as="a"
+      <a
         href={href || "#"}
         target={href ? "_blank" : "_self"}
-        variant="paragraph"
-        className="flex items-center gap-2 font-medium"
+        className="flex items-center gap-2 font-medium text-sm"
       >
         {children}
-      </Typography>
+      </a>
     </li>
   );
 }
@@ -80,72 +70,73 @@ export function Navbar() {
   }, []);
 
   return (
-    <MTNavbar
-      shadow={false}
-      fullWidth
-      blurred={false}
-      color={isScrolling ? "white" : "transparent"}
-      className="fixed top-0 z-50 border-0"
+    <nav
+      className={`fixed top-0 z-50 w-full border-0 transition-all duration-300 ${
+        isScrolling ? 'bg-white shadow-lg' : 'bg-black/20 backdrop-blur-md'
+      }`}
     >
-      <div className="container mx-auto flex items-center justify-between">
-        <Typography
-          color={isScrolling ? "blue-gray" : "white"}
-          className="text-lg font-bold"
-        >
-          Material Tailwind
-        </Typography>
-        <ul
-          className={`ml-10 hidden items-center gap-6 lg:flex ${
-            isScrolling ? "text-gray-900" : "text-white"
+      <div className="container mx-auto flex items-center justify-between px-4 py-4">
+        <h1
+          className={`text-xl font-bold transition-colors duration-300 ${
+            isScrolling ? 'text-blue-gray-800' : 'text-white drop-shadow-lg'
           }`}
         >
-          {NAV_MENU.map(({ name, icon: Icon, href }) => (
-            <NavItem key={name} href={href}>
-              <Icon className="h-5 w-5" />
-              <span>{name}</span>
-            </NavItem>
-          ))}
+          AI Conference 2023
+        </h1>
+        <ul
+          className={`ml-10 hidden items-center gap-6 lg:flex transition-colors duration-300 ${
+            isScrolling ? "text-gray-900" : "text-white drop-shadow-md"
+          }`}
+        >
+          <li><a href="#about" className="hover:text-blue-400 transition-colors font-medium">About</a></li>
+          <li><a href="#speakers" className="hover:text-blue-400 transition-colors font-medium">Speakers</a></li>
+          <li><a href="#schedule" className="hover:text-blue-400 transition-colors font-medium">Schedule</a></li>
+          <li><a href="#faq" className="hover:text-blue-400 transition-colors font-medium">FAQ</a></li>
         </ul>
         <div className="hidden items-center gap-4 lg:flex">
-          <Button color={isScrolling ? "gray" : "white"} variant="text">
+          <button className={`px-4 py-2 rounded text-sm font-medium transition-colors duration-300 ${
+            isScrolling ? 'text-gray-700 hover:text-gray-900' : 'text-white hover:text-gray-200 drop-shadow-md'
+          }`}>
             Log in
-          </Button>
-          <a href="https://www.material-tailwind.com/blocks" target="_blank">
-            <Button color={isScrolling ? "gray" : "white"}>blocks</Button>
-          </a>
+          </button>
+          <button className={`px-6 py-2 rounded-lg text-sm font-medium transition-colors duration-300 ${
+            isScrolling ? 'bg-blue-600 text-white hover:bg-blue-700' : 'bg-white/90 text-gray-900 hover:bg-white shadow-lg'
+          }`}>
+            Register Now
+          </button>
         </div>
-        <IconButton
-          variant="text"
-          color={isScrolling ? "gray" : "white"}
+        <button
           onClick={handleOpen}
-          className="ml-auto inline-block lg:hidden"
+          className={`ml-auto inline-block lg:hidden p-2 rounded-lg transition-colors ${
+            isScrolling ? 'text-gray-700 hover:bg-gray-100' : 'text-white hover:bg-white/20 drop-shadow-md'
+          }`}
         >
           {open ? (
-            <XMarkIcon strokeWidth={2} className="h-6 w-6" />
+            <XMarkIcon className="h-6 w-6" />
           ) : (
-            <Bars3Icon strokeWidth={2} className="h-6 w-6" />
+            <Bars3Icon className="h-6 w-6" />
           )}
-        </IconButton>
+        </button>
       </div>
-      <Collapse open={open}>
-        <div className="container mx-auto mt-4 rounded-lg bg-white px-6 py-5">
+      {open && (
+        <div className="container mx-auto mt-4 rounded-lg bg-white px-6 py-5 lg:hidden shadow-lg">
           <ul className="flex flex-col gap-4 text-gray-900">
-            {NAV_MENU.map(({ name, icon: Icon, href }) => (
-              <NavItem key={name} href={href}>
-                <Icon className="h-5 w-5" />
-                {name}
-              </NavItem>
-            ))}
+            <li><a href="#about" className="hover:text-blue-500 transition-colors">About</a></li>
+            <li><a href="#speakers" className="hover:text-blue-500 transition-colors">Speakers</a></li>
+            <li><a href="#schedule" className="hover:text-blue-500 transition-colors">Schedule</a></li>
+            <li><a href="#faq" className="hover:text-blue-500 transition-colors">FAQ</a></li>
           </ul>
           <div className="mt-6 flex items-center gap-4">
-            <Button variant="text">Log in</Button>
-            <a href="https://www.materila-tailwind.com/blocks" target="_blank">
-              <Button color="gray">blocks</Button>
-            </a>
+            <button className="px-4 py-2 rounded text-sm font-medium text-gray-700 hover:text-gray-900">
+              Log in
+            </button>
+            <button className="px-6 py-2 rounded-lg text-sm font-medium bg-blue-600 text-white hover:bg-blue-700">
+              Register Now
+            </button>
           </div>
         </div>
-      </Collapse>
-    </MTNavbar>
+      )}
+    </nav>
   );
 }
 
