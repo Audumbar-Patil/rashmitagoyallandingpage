@@ -81,7 +81,7 @@ export function Navbar() {
             isScrolling ? 'text-blue-gray-800' : 'text-white drop-shadow-lg'
           }`}
         >
-          AI Conference 2023
+          RASHMITA GOYAL
         </h1>
         <ul
           className={`ml-10 hidden items-center gap-6 lg:flex transition-colors duration-300 ${
@@ -93,7 +93,7 @@ export function Navbar() {
           <li><a href="#schedule" className="hover:text-blue-400 transition-colors font-medium">Schedule</a></li>
           <li><a href="#faq" className="hover:text-blue-400 transition-colors font-medium">FAQ</a></li>
         </ul>
-        <div className="hidden items-center gap-4 lg:flex">
+        {/* <div className="hidden items-center gap-4 lg:flex">
           <button className={`px-4 py-2 rounded text-sm font-medium transition-colors duration-300 ${
             isScrolling ? 'text-gray-700 hover:text-gray-900' : 'text-white hover:text-gray-200 drop-shadow-md'
           }`}>
@@ -104,7 +104,7 @@ export function Navbar() {
           }`}>
             Register Now
           </button>
-        </div>
+        </div> */}
         <button
           onClick={handleOpen}
           className={`ml-auto inline-block lg:hidden p-2 rounded-lg transition-colors ${
